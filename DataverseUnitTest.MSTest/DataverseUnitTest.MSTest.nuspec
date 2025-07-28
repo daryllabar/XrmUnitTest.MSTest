@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>DataverseUnitTest.MSTest</id>
+		<version>1.0.0.0</version>
+		<authors>Daryl LaBar</authors>
+		<owners>Daryl LaBar</owners>
+		<license type="expression">MIT</license>
+		<projectUrl>https://github.com/daryllabar/XrmUnitTest.MSTest</projectUrl>
+		<icon>images\DLaB_Dynamics_64x64.png</icon>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Contains MS Test Provider classes for Dataverse/XRM Unit Testing Library</description>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="Microsoft.CSharp" />
+			<frameworkAssembly assemblyName="System.Configuration" />
+		</frameworkAssemblies>
+		<releaseNotes></releaseNotes>
+		<copyright>Copyright 2018</copyright>
+		<tags>Dynamics CRM v9 Plugin XRM CDS Dataverse UnitTest MSTest</tags>
+		<dependencies>
+			<group targetFramework="net6.0">
+				<dependency id="DataverseUnitTest" version="3.4.*" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin\Release\net6.0\DataverseUnitTest.MSTest.dll" target="lib\net6.0" />
+		<file src="bin\Release\net6.0\DataverseUnitTest.MSTest.pdb" target="lib\net6.0" />
+		<file src="..\DLaB_Dynamics_64x64.png" target="images\" />
+	</files>
+</package>

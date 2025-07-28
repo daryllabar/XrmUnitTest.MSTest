@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XrmUnitTest.MSTest", "XrmUnitTest.MSTest\XrmUnitTest.MSTest.csproj", "{2C2B5C8A-ACF0-408E-808C-CDE83E53663A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MSTest", "MSTest\MSTest.shproj", "{C70F5383-B093-4B09-8572-16BC62E4FF6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XrmUnitTest.MSTest.Tests", "XrmUnitTest.MSTest.Tests\XrmUnitTest.MSTest.Tests.csproj", "{A950ABDF-2062-40FD-9F8B-549C25BA389E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataverseUnitTest.MSTest", "DataverseUnitTest.MSTest\DataverseUnitTest.MSTest.csproj", "{742E3142-6858-4E0A-959D-6E7A54DF7612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataverseUnitTest.MSTest.Tests", "DataverseUnitTest.MSTest.Tests\DataverseUnitTest.MSTest.Tests.csproj", "{80DEE9BA-E5B6-4B11-A8EF-A40ED8933883}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MSTest.Tests", "MSTest.Tests\MSTest.Tests.shproj", "{54066752-0401-43B1-97C5-E8306A7F3AF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C2B5C8A-ACF0-408E-808C-CDE83E53663A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2B5C8A-ACF0-408E-808C-CDE83E53663A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2B5C8A-ACF0-408E-808C-CDE83E53663A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2B5C8A-ACF0-408E-808C-CDE83E53663A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A950ABDF-2062-40FD-9F8B-549C25BA389E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A950ABDF-2062-40FD-9F8B-549C25BA389E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A950ABDF-2062-40FD-9F8B-549C25BA389E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A950ABDF-2062-40FD-9F8B-549C25BA389E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{742E3142-6858-4E0A-959D-6E7A54DF7612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{742E3142-6858-4E0A-959D-6E7A54DF7612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{742E3142-6858-4E0A-959D-6E7A54DF7612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{742E3142-6858-4E0A-959D-6E7A54DF7612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DEE9BA-E5B6-4B11-A8EF-A40ED8933883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DEE9BA-E5B6-4B11-A8EF-A40ED8933883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DEE9BA-E5B6-4B11-A8EF-A40ED8933883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DEE9BA-E5B6-4B11-A8EF-A40ED8933883}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98C60D72-022A-4D15-ACAF-B9B2D221144B}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		MSTest\MSTest.projitems*{2c2b5c8a-acf0-408e-808c-cde83e53663a}*SharedItemsImports = 5
+		MSTest.Tests\MSTest.Tests.projitems*{54066752-0401-43b1-97c5-e8306a7f3af5}*SharedItemsImports = 13
+		MSTest\MSTest.projitems*{742e3142-6858-4e0a-959d-6e7a54df7612}*SharedItemsImports = 5
+		MSTest.Tests\MSTest.Tests.projitems*{80dee9ba-e5b6-4b11-a8ef-a40ed8933883}*SharedItemsImports = 5
+		MSTest.Tests\MSTest.Tests.projitems*{a950abdf-2062-40fd-9f8b-549c25ba389e}*SharedItemsImports = 5
+		MSTest\MSTest.projitems*{c70f5383-b093-4b09-8572-16bc62e4ff6f}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <SignAssembly>True</SignAssembly>
+	  <DelaySign>false</DelaySign>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <LangVersion>latest</LangVersion>
+	  <AssemblyOriginatorKeyFile>DataverseUnitTest.MSTest.snk</AssemblyOriginatorKeyFile>
+	  <Version>1.0.0.0</Version>
+  </PropertyGroup>
+
+  <Import Project="..\MSTest\MSTest.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="DataverseUnitTest" Version="3.4.0.7" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.9.3" />
+  </ItemGroup>
+
+</Project>
