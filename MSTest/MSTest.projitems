@@ -9,6 +9,8 @@
     <Import_RootNamespace>MSTest</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)LocalTestBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DebugLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MsTestExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MsTestProvider.cs" />
   </ItemGroup>

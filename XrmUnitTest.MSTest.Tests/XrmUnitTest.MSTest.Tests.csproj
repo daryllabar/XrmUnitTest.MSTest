@@ -15,20 +15,20 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="Microsoft.Testing.Extensions.Telemetry" Version="1.7.3" />
     <PackageReference Include="Microsoft.Testing.Extensions.TrxReport.Abstractions" Version="1.7.3" />
     <PackageReference Include="Microsoft.Testing.Extensions.VSTestBridge" Version="1.7.3" />
     <PackageReference Include="Microsoft.Testing.Platform" Version="1.7.3" />
     <PackageReference Include="Microsoft.Testing.Platform.MSBuild" Version="1.7.3" />
-    <PackageReference Include="Microsoft.TestPlatform.AdapterUtilities" Version="17.13.0" />
-    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.13.0" />
+    <PackageReference Include="Microsoft.TestPlatform.AdapterUtilities" Version="17.14.1" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.14.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.9.3" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.7" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="5.0.0" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
-    <PackageReference Include="System.Reflection.Metadata" Version="1.6.0" />
+    <PackageReference Include="System.Reflection.Metadata" Version="9.0.7" />
   </ItemGroup>
   <Import Project="..\MSTest.Tests\MSTest.Tests.projitems" Label="Shared" />
 </Project>

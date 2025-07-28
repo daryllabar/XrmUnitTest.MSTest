@@ -9,12 +9,14 @@
 	  <LangVersion>latest</LangVersion>
 	  <AssemblyOriginatorKeyFile>DataverseUnitTest.MSTest.snk</AssemblyOriginatorKeyFile>
 	  <Version>1.0.0.1</Version>
+	  <RootNamespace>DataverseUnitTest.MSTest</RootNamespace>
   </PropertyGroup>
 
   <Import Project="..\MSTest\MSTest.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="DataverseUnitTest" Version="3.4.0.7" />
+    <PackageReference Include="DataverseUnitTest" Version="3.4.0.8" />
+    <PackageReference Include="Microsoft.PowerPlatform.Dataverse.Client" Version="1.2.9" />
     <PackageReference Include="MSTest.TestFramework" Version="3.9.3" />
   </ItemGroup>
 
