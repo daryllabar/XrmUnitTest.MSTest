@@ -1,0 +1,38 @@
+﻿<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>XrmUnitTest.MSTest</id>
+		<version>1.0.0.0</version>
+		<authors>Daryl LaBar</authors>
+		<owners>Daryl LaBar</owners>
+		<license type="expression">MIT</license>
+		<projectUrl>https://github.com/daryllabar/XrmUnitTest.MSTest</projectUrl>
+		<icon>images\DLaB_Dynamics_64x64.png</icon>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Contains MS Test Provider classes for Dataverse/XRM Unit Testing Library</description>
+		<releaseNotes></releaseNotes>
+		<copyright>Copyright 2018</copyright>
+		<tags>Dynamics CRM v9 Plugin XRM CDS UnitTest</tags>
+		<dependencies>
+			<group targetFramework=".NETFramework4.6.2">
+				<dependency id="XrmUnitTest.09" version="3.4.0.7" include="all" />
+				<dependency id="MSTest.TestFramework" version="3.9.3" include="all" />
+			</group>
+			<group targetFramework=".NETFramework4.7.2">
+				<dependency id="XrmUnitTest.09" version="3.4.0.7" include="all" />
+				<dependency id="MSTest.TestFramework" version="3.9.3" include="all" />
+			</group>
+			<group targetFramework=".NETFramework4.8">
+				<dependency id="XrmUnitTest.09" version="3.4.0.7" include="all" />
+				<dependency id="MSTest.TestFramework" version="3.9.3" include="all" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin\Release\net462\XrmUnitTest.MSTest.dll" target="lib\net462\XrmUnitTest.MSTest.dll" />
+		<file src="bin\Release\net472\XrmUnitTest.MSTest.dll" target="lib\net472\XrmUnitTest.MSTest.dll" />
+		<file src="bin\Release\net48\XrmUnitTest.MSTest.dll" target="lib\net48\XrmUnitTest.MSTest.dll" />
+
+		<file src="..\DLaB_Dynamics_64x64.png" target="images\" />
+	</files>
+</package>
