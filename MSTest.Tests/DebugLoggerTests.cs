@@ -1,3 +1,4 @@
+#if DEBUG
 using System.Diagnostics;
 #if NET
 using DataverseUnitTest.MSTest;
@@ -92,3 +93,4 @@ namespace XrmUnitTest.MSTest.Tests
         }
     }
 }
+#endif
