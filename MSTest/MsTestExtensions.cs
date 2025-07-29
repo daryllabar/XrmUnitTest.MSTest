@@ -1,17 +1,13 @@
-﻿using DLaB.Xrm;
-#if NET
+﻿#if NET
 using DataverseUnitTest;
 #else
 using DLaB.Xrm.Test;
 
 using System;
-using System.Collections.Generic;
 #endif
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
-using System.Collections;
 using System.Diagnostics;
-using System.Globalization;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter
@@ -130,145 +126,14 @@ namespace Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter
         /// <param name="actual">The actual entity.</param>
         public static void AttributesAreEqual(this Assert assert, Entity? expected, Entity? actual)
         {
+            var message = AssertHelper.AttributesAreEqual(expected, actual);
             // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-            if (expected == null && actual == null)
+            if (message == null)
             {
                 return;
             }
 
-            const string name = nameof(AttributesAreEqual);
-            if (expected == null)
-            {
-                Fail(name, "Expected null but actual was not null.");
-                return;
-            }
-
-            if (actual == null)
-            {
-                Fail(name, "Actual was null.");
-                return;
-            }
-            // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-
-            foreach (var att in expected.Attributes)
-            {
-                if (actual.Contains(att.Key))
-                {
-                    var actualValue = actual[att.Key];
-                    switch (att.Value)
-                    {
-                        case null when actualValue == null:
-                            continue;
-                        case null:
-                            Fail(name, $"Expected attribute: \"{att.Key}\" to be null, but actual was {actualValue.GetDisplayValue()}.");
-                            break;
-                        default:
-                            {
-                                var errorMessage = AttributeIsEqual(actualValue, att);
-                                if (errorMessage != null)
-                                {
-                                    Fail(name, errorMessage);
-                                }
-
-                                break;
-                            }
-                    }
-                }
-                else
-                {
-                    Fail(name, $"Attribute {att.Key} was expected but not found!");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns an exception string to fail if the single attribute value is not equal between expected and actual.
-        /// </summary>
-        /// <param name="actualValue">The actual value.</param>
-        /// <param name="att">The expected attribute key-value pair.</param>
-        [DebuggerHidden]
-        private static string? AttributeIsEqual(object actualValue,  KeyValuePair<string, object> att)
-        {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-            if (actualValue == null) 
-            {
-                return $"Expected attribute: \"{att.Key}\" with value: {att.Value.GetDisplayValue()} but actual was null.";
-            }
-
-            if (att.Value.Equals(actualValue))
-            {
-                return null;
-            }
-
-            if (actualValue is DateTime date)
-            {
-                // If hitting real database, and if the actual time value is midnight, assume that the Date Time is a Date Only field, and compare dates only:
-                if (!TestBase.UseLocalCrmDatabase
-                    && date == date.Date
-                    && att.Value is DateTime expectedDate
-                    && expectedDate.Date.Equals(date))
-                {
-                    return null;
-                }
-
-                return $"Expected attribute: \"{att.Key}\" with value: {GetDateTimeTicks((DateTime)att.Value)} but actual was {GetDateTimeTicks(date)}.";
-            }
-
-            return $"Expected attribute: \"{att.Key}\" with value: {att.Value.GetDisplayValue()} but actual was {actualValue.GetDisplayValue()}.";
-        }
-
-        /// <summary>
-        /// Gets a string representation of a <see cref="DateTime"/> value including its ticks.
-        /// </summary>
-        /// <param name="date">The date value.</param>
-        /// <returns>A string with the date, time, and ticks.</returns>
-        private static string GetDateTimeTicks(DateTime date)
-        {
-            return $"\"{date.ToShortDateString()} {date.ToLongTimeString()}\" ({date.Ticks})";
-        }
-
-        /// <summary>
-        /// Gets a display string for the specified object, with special handling for CRM types.
-        /// </summary>
-        /// <param name="obj">The object to display.</param>
-        /// <returns>A string representation of the object.</returns>
-        private static string GetDisplayValue(this object obj)
-        {
-            return obj switch
-            {
-                null => "null",
-                Entity entity => entity.ToStringAttributes(),
-                EntityReference entityRef => entityRef.ToStringDebug(),
-                EntityCollection entities => entities.ToStringDebug(),
-                EntityReferenceCollection entityRefCollection => entityRefCollection.ToStringDebug(),
-                Dictionary<string, string> dict => dict.ToStringDebug(),
-                byte[] imageArray => imageArray.ToStringDebug(),
-                IEnumerable enumerable and not string => enumerable.ToStringDebug(),
-                OptionSetValue optionSet => optionSet.Value.ToString(CultureInfo.InvariantCulture),
-                Money money => money.Value.ToString(CultureInfo.InvariantCulture),
-                bool yesNo => yesNo ? "true" : "false",
-                _ => obj.IsNumeric() ? obj.ToString()! : $"\"{obj}\""
-            };
-        }
-
-        /// <summary>
-        /// Determines whether the specified object is a numeric type.
-        /// </summary>
-        /// <param name="o">The object to check.</param>
-        /// <returns><c>true</c> if the object is numeric; otherwise, <c>false</c>.</returns>
-        private static bool IsNumeric(this object o)
-        {
-            return o is byte
-                or sbyte
-                or ushort
-                or uint
-                or ulong
-                or short
-                or int
-                or long
-                or float
-                or double
-                or decimal;
+            Fail(nameof(AttributesAreEqual), message);
         }
 
         #endregion Asserts

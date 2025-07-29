@@ -49,7 +49,7 @@ namespace DLaB.Xrm.Test.MSTest
         /// <summary>
         /// Exposes an CrmEnvironmentBuilder that can be used to reflectively associate records without having to specify the join, as well as create the records in the correct order, even handling circular references.
         /// </summary>
-        protected TCrmEnvironmentBuilder CrmData { get; private set; } = null!;
+        protected TCrmEnvironmentBuilder EnvBuilder { get; private set; } = null!;
 
         /// <summary>
         /// The Business Unit
@@ -91,6 +91,12 @@ namespace DLaB.Xrm.Test.MSTest
         /// Fake Tracing Service that can be used to assert that the correct messages were logged.
         /// </summary>
         protected FakeTraceService TracingService { get; set; } = null!;
+#if !PRE_MULTISELECT
+        /// <summary>
+        /// Fake Managed Identity Service that can be used to assert token acquisition in tests.
+        /// </summary>
+        protected FakeManagedIdentityService ManagedIdentityService { get; set; } = null!;
+#endif
         /// <summary>
         /// Yesterday's date for the user at midnight
         /// </summary>
@@ -119,7 +125,10 @@ namespace DLaB.Xrm.Test.MSTest
             CurrentBusinessUnit = new Id<TBusinessUnit>(Service.GetFirst<TBusinessUnit>().Id);
             CurrentUser = new Id<TSystemUser>(Service.GetCurrentlyExecutingUserInfo().UserId);
             TracingService = new FakeTraceService(_logger);
-            CrmData = new TCrmEnvironmentBuilder();
+#if !PRE_MULTISELECT
+            ManagedIdentityService = new FakeManagedIdentityService();
+#endif
+            EnvBuilder = new TCrmEnvironmentBuilder();
             PreInitialize();
             Initialize();
             _logger.Enabled = true;
