@@ -8,7 +8,7 @@
     <Nullable>enable</Nullable>
 	  <LangVersion>latest</LangVersion>
 	  <AssemblyOriginatorKeyFile>DataverseUnitTest.MSTest.snk</AssemblyOriginatorKeyFile>
-	  <Version>1.0.0.1</Version>
+	  <Version>1.0.0.2</Version>
 	  <RootNamespace>DataverseUnitTest.MSTest</RootNamespace>
   </PropertyGroup>
 
