@@ -137,7 +137,21 @@ namespace DLaB.Xrm.Test.MSTest
             Container.AddSingleton(Service);
         }
 
-        protected abstract IIocContainer RegisterLocalTestServices(IIocContainer container);
+        /// <summary>
+        /// Override to register any local test services that are not registered by default.
+        /// </summary>
+        /// <param name="container"></param>
+        /// <returns></returns>
+        protected virtual IIocContainer RegisterLocalTestServices(IIocContainer container)
+        {
+            return container
+                .AddSingleton(_ => new ExtendedOrganizationServiceSettings
+                {
+                    LogDetailedRequests = false,
+                    ProxyTypesAssembly = typeof(TDataverseContext).Assembly,
+                })
+                .AddScoped(_ => Service);
+        }
 
         [TestCleanup]
         public void PreTestCleanup()
