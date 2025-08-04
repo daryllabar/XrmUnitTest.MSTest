@@ -108,7 +108,7 @@ namespace DLaB.Xrm.Test.MSTest
         private readonly string _testId = "_" + Guid.NewGuid();
         private string TestId => TestContext.TestName + _testId;
 
-        private readonly DebugLogger _logger = new();
+        private readonly TestLogger _logger = new();
 
         /// <summary>
         /// Initializes the class before each test run.  First utilize overriding Initialize() before resorting to overriding this method.
@@ -219,7 +219,7 @@ namespace DLaB.Xrm.Test.MSTest
 
         public static IOrganizationService CreateLocalService(string testId, ITestLogger? logger = null)
         {
-            return new FakeIOrganizationService(new LocalCrmDatabaseOrganizationService(LocalCrmDatabaseInfo.Create<TDataverseContext>(testId)), logger ?? new DebugLogger());
+            return new FakeIOrganizationService(new LocalCrmDatabaseOrganizationService(LocalCrmDatabaseInfo.Create<TDataverseContext>(testId)), logger ?? new TestLogger());
         }
     }
 }

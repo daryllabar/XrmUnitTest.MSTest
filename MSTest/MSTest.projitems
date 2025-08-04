@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)LocalTestBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebugLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MsTestExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MsTestProvider.cs" />
   </ItemGroup>

@@ -11,7 +11,7 @@ using DLaB.Xrm.Test.MSTest;
 namespace XrmUnitTest.MSTest.Tests
 {
     [TestClass]
-    public class DebugLoggerTests
+    public class TestLoggerTests
     {
         private class DebugListenerStub : TraceListener
         {
@@ -63,7 +63,7 @@ namespace XrmUnitTest.MSTest.Tests
         [TestMethod]
         public void WriteLine_ShouldWriteMessage_WhenEnabled()
         {
-            var logger = new DebugLogger { Enabled = true };
+            var logger = new TestLogger { Enabled = true };
             logger.WriteLine("Test message");
             Assert.IsTrue(_listener.Messages.Contains("Test message"));
         }
@@ -71,7 +71,7 @@ namespace XrmUnitTest.MSTest.Tests
         [TestMethod]
         public void WriteLine_ShouldNotWriteMessage_WhenDisabled()
         {
-            var logger = new DebugLogger { Enabled = false };
+            var logger = new TestLogger { Enabled = false };
             logger.WriteLine("Test message");
             Assert.IsFalse(_listener.Messages.Contains("Test message"));
         }
@@ -79,7 +79,7 @@ namespace XrmUnitTest.MSTest.Tests
         [TestMethod]
         public void WriteLine_Format_ShouldWriteFormattedMessage_WhenEnabled()
         {
-            var logger = new DebugLogger { Enabled = true };
+            var logger = new TestLogger { Enabled = true };
             logger.WriteLine("Hello {0}", "World");
             Assert.IsTrue(_listener.Messages.Exists(m => m.Contains("Hello World")));
         }
@@ -87,7 +87,7 @@ namespace XrmUnitTest.MSTest.Tests
         [TestMethod]
         public void WriteLine_Format_ShouldNotWriteFormattedMessage_WhenDisabled()
         {
-            var logger = new DebugLogger { Enabled = false };
+            var logger = new TestLogger { Enabled = false };
             logger.WriteLine("Hello {0}", "World");
             Assert.IsFalse(_listener.Messages.Exists(m => m.Contains("Hello World")));
         }

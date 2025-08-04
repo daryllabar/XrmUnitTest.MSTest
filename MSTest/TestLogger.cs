@@ -17,7 +17,7 @@ namespace DLaB.Xrm.Test.MSTest
     /// <summary>
     /// Provides a logger implementation that writes output to the debug window.
     /// </summary>
-    public class DebugLogger : ITestLogger
+    public class TestLogger : ITestLogger
     {
         /// <summary>
         /// Gets or sets a value indicating whether logging is enabled.  It is useful to disable logging while test setup is running, to avoid cluttering the debug output with setup messages.
@@ -34,8 +34,8 @@ namespace DLaB.Xrm.Test.MSTest
             {
                 return;
             }
-            Debug.WriteLine(message);
-            Debug.WriteLine("");
+            Trace.WriteLine(message);
+            Trace.WriteLine("");
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace DLaB.Xrm.Test.MSTest
             {
                 return;
             }
-            Debug.WriteLine(format, args);
-            Debug.WriteLine("");
+            Trace.WriteLine(string.Format(format, args));
+            Trace.WriteLine("");
         }
     }
 }
