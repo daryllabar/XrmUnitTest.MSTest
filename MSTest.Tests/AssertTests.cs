@@ -1,5 +1,4 @@
 ﻿#if NET
-using DataverseUnitTest;
 using DLaB.Xrm;
 #else
 using DLaB.Xrm;
@@ -9,10 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 #endif
-using Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter;
 using Microsoft.Xrm.Sdk;
+using System.Xml.Linq;
 
+#if NET
+namespace DataverseUnitTest.MSTest.Tests
+#else
 namespace XrmUnitTest.MSTest.Tests
+#endif
 {
     [TestClass]
     public class AssertTests
@@ -42,10 +45,10 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.IsFalse(isValid, $"Expected AreCloseEnough not to fail, but it failed with: {ex.Message}.");
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.AreCloseEnough(Assert assert"));
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.AreCloseEnough("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.AreCloseEnough(Assert assert", traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.AreCloseEnough(", traces[2]);
             }
         }
 
@@ -59,10 +62,10 @@ namespace XrmUnitTest.MSTest.Tests
             catch (AssertFailedException ex)
             {
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.AreCloseEnough(Assert assert"));
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.AreCloseEnough_Null_Should_Assert("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.AreCloseEnough(Assert assert", traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.AreCloseEnough_Null_Should_Assert(", traces[2]);
             }
         }
 
@@ -83,10 +86,10 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.AreEqual("Assert.AttributesAreEqual failed.  Expected null but actual was not null.", ex.Message);
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.AttributesAreEqual(Assert assert"));
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.AttributesAreEqual(Assert assert", traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual(", traces[2]);
             }
 
             try
@@ -97,10 +100,10 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.AreEqual("Assert.AttributesAreEqual failed.  Actual was null.", ex.Message);
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.AttributesAreEqual(Assert assert"));
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.AttributesAreEqual(Assert assert", traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual(", traces[2]);
             }
 
             try
@@ -111,10 +114,10 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.AreEqual("Assert.AttributesAreEqual failed.  Attribute A was expected but not found!", ex.Message);
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.AttributesAreEqual(Assert assert"));
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.AttributesAreEqual(Assert assert", traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual(", traces[2]);
             }
 
             try
@@ -125,10 +128,10 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.AreEqual("Assert.AttributesAreEqual failed.  Expected attribute: \"A\" to be null, but actual was \"Not NULL\".", ex.Message);
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.AttributesAreEqual(Assert assert"));
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.AttributesAreEqual(Assert assert", traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual(", traces[2]);
             }
 
             try
@@ -139,10 +142,10 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.AreEqual("Assert.AttributesAreEqual failed.  Expected attribute: \"A\" with value: \"Not NULL\" but actual was null.", ex.Message);
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.AttributesAreEqual(Assert assert"), traces[1]);
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.AttributesAreEqual(Assert assert", traces[1], traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.AttributesAreEqual_NullInputs_Should_AssertIfNotEqual(", traces[2]);
             }
         }
 
@@ -251,11 +254,11 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.AreEqual("Assert.ThrowsException failed.  Expected exception of type InvalidPluginExecutionException to be thrown.", ex.Message);
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(4, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.ThrowsException[TException](Assert assert, Action action, String message) in "), traces[1]);
-                Assert.IsTrue(traces[2].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.ExpectExecutionToThrowException(IPlugin plugin, IServiceProvider serviceProvider, String message) in "), traces[2]);
-                Assert.IsTrue(traces[3].Contains(".MSTest.Tests.AssertTests.ExpectExecutionToThrowException_PluginThrowsNoException_Should_Assert("));
+                Assert.HasCount(4, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.ThrowsException[TException](Assert assert, Action action, String message) in ", traces[1], traces[1]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.ExpectExecutionToThrowException(IPlugin plugin, IServiceProvider serviceProvider, String message) in ", traces[2], traces[2]);
+                Assert.Contains(".MSTest.Tests.AssertTests.ExpectExecutionToThrowException_PluginThrowsNoException_Should_Assert(", traces[3]);
             }
         }
 
@@ -302,10 +305,10 @@ namespace XrmUnitTest.MSTest.Tests
             {
                 Assert.AreEqual("Assert.IsNotNullOrWhiteSpace failed.  No values were passed in.", ex.Message);
                 var traces = ex.StackTrace!.Split([Environment.NewLine], StringSplitOptions.None);
-                Assert.AreEqual(3, traces.Length);
-                Assert.IsTrue(traces[0].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.Fail(String name, String message) in "));
-                Assert.IsTrue(traces[1].StartsWith("   at Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.MsTestExtensions.IsNotNullOrWhiteSpace(Assert assert"));
-                Assert.IsTrue(traces[2].Contains(".MSTest.Tests.AssertTests.IsNotNullOrWhiteSpace_Null_Should_Assert("));
+                Assert.HasCount(3, traces);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.Fail(String name, String message) in ", traces[0]);
+                Assert.StartsWith($"   at Microsoft.VisualStudio.TestTools.UnitTesting.MsTestExtensions.IsNotNullOrWhiteSpace(Assert assert", traces[1]);
+                Assert.Contains(".MSTest.Tests.AssertTests.IsNotNullOrWhiteSpace_Null_Should_Assert(", traces[2]);
             }
         }
 

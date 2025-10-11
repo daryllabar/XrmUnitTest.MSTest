@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
 using Microsoft.Xrm.Sdk.Client;
-using Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter;
 using DLaB.Xrm.Ioc;
 using DLaB.Xrm.LocalCrm;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 
 #if NET
 using DLaB.Xrm;
 using DataverseUnitTest.Assumptions;
 #else
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 using DLaB.Xrm.Test.Assumptions;

@@ -1,14 +1,16 @@
 #if DEBUG
 using System.Diagnostics;
-#if NET
-using DataverseUnitTest.MSTest;
-#else
+#if !NET
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using DLaB.Xrm.Test.MSTest;
 #endif
 
+#if NET
+namespace DataverseUnitTest.MSTest.Tests
+#else
 namespace XrmUnitTest.MSTest.Tests
+#endif
 {
     [TestClass]
     public class TestLoggerTests

@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DataverseUnitTest.MSTest</id>
-		<version>1.0.0.5</version>
+		<version>1.0.0.6</version>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
 		<license type="expression">MIT</license>
@@ -20,12 +20,13 @@
 		<dependencies>
 			<group targetFramework="net8.0">
 				<dependency id="DataverseUnitTest" version="3.4.*" />
+				<dependency id="MSTest" version="4.*" />
 			</group>
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="bin\Release\net6.0\DataverseUnitTest.MSTest.dll" target="lib\net8.0" />
-		<file src="bin\Release\net6.0\DataverseUnitTest.MSTest.pdb" target="lib\net8.0" />
+		<file src="bin\Release\net8.0\DataverseUnitTest.MSTest.dll" target="lib\net8.0" />
+		<file src="bin\Release\net8.0\DataverseUnitTest.MSTest.pdb" target="lib\net8.0" />
 		<file src="..\DLaB_Dynamics_64x64.png" target="images\" />
 	</files>
 </package>

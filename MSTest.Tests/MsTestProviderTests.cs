@@ -1,11 +1,13 @@
-#if NET
-using DataverseUnitTest.MSTest;
-#else
+#if !NET
 using DLaB.Xrm.Test.MSTest;
 #endif
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+#if NET
+namespace DataverseUnitTest.MSTest.Tests
+#else
 namespace XrmUnitTest.MSTest.Tests
+#endif
 {
     [TestClass]
     public class MsTestProviderTests
