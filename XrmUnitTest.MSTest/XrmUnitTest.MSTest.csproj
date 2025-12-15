@@ -18,8 +18,8 @@
     <DefineConstants>$(DefineConstants);DEBUGGER_HIDDEN</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MSTest" Version="4.0.0" />
-    <PackageReference Include="XrmUnitTest.09" Version="3.4.0.22" />
+    <PackageReference Include="MSTest" Version="4.0.2" />
+    <PackageReference Include="XrmUnitTest.09" Version="3.4.0.32" />
   </ItemGroup>
   <Import Project="..\MSTest\MSTest.projitems" Label="Shared" />
 </Project>
