@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DataverseUnitTest.MSTest</id>
-		<version>1.0.0.8</version>
+		<version>1.0.0.9</version>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
 		<license type="expression">MIT</license>
@@ -19,8 +19,8 @@
 		<tags>Dynamics CRM v9 Plugin XRM CDS Dataverse UnitTest MSTest</tags>
 		<dependencies>
 			<group targetFramework="net8.0">
-				<dependency id="DataverseUnitTest" version="3.4.*" />
-				<dependency id="MSTest" version="4.*" />
+				<dependency id="DataverseUnitTest" version="3.4.0.33" />
+				<dependency id="MSTest" version="4.0.2" />
 			</group>
 		</dependencies>
 	</metadata>

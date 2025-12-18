@@ -8,14 +8,14 @@
     <Nullable>enable</Nullable>
 	  <LangVersion>latest</LangVersion>
 	  <AssemblyOriginatorKeyFile>DataverseUnitTest.MSTest.snk</AssemblyOriginatorKeyFile>
-	  <Version>1.0.0.8</Version>
+	  <Version>1.0.0.9</Version>
 	  <RootNamespace>DataverseUnitTest.MSTest</RootNamespace>
   </PropertyGroup>
 
   <Import Project="..\MSTest\MSTest.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="DataverseUnitTest" Version="3.4.0.32" />
+    <PackageReference Include="DataverseUnitTest" Version="3.4.0.33" />
     <PackageReference Include="MSTest" Version="4.0.2" />
   </ItemGroup>
 
