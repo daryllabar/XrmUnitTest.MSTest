@@ -12,5 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)AssertTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestLoggerTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MsTestProviderTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LocalTestBaseTests.cs" />
   </ItemGroup>
 </Project>

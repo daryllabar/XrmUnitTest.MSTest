@@ -218,7 +218,24 @@ namespace DLaB.Xrm.Test.MSTest
 
         public static IOrganizationService CreateLocalService(string testId, ITestLogger? logger = null)
         {
-            return new FakeIOrganizationService(new LocalCrmDatabaseOrganizationService(LocalCrmDatabaseInfo.Create<TDataverseContext>(testId)), logger ?? new TestLogger());
+            return CreateLocalService(testId, _ => { }, logger);
+        }
+
+        public static IOrganizationService CreateLocalService(string testId, Action<LocalCrmDatabaseInfo> crmDatabaseOptions, ITestLogger? logger = null)
+        {
+            if (crmDatabaseOptions is null)
+            {
+                throw new ArgumentNullException(nameof(crmDatabaseOptions));
+            }
+
+            var databaseInfo = LocalCrmDatabaseInfo.Create<TDataverseContext>(testId);
+            crmDatabaseOptions(databaseInfo);
+            return new FakeIOrganizationService(new LocalCrmDatabaseOrganizationService(databaseInfo), logger ?? new TestLogger());
+        }
+
+        public static IOrganizationService CreateLocalService(Action<LocalCrmDatabaseInfo> crmDatabaseOptions, ITestLogger? logger = null)
+        {
+            return CreateLocalService(Guid.NewGuid().ToString(), crmDatabaseOptions, logger);
         }
     }
 }
