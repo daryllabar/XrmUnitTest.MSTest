@@ -189,7 +189,7 @@ namespace DLaB.Xrm.Test.MSTest
         /// </summary>
         protected virtual IOrganizationService CreateService()
         {
-            return CreateLocalService(TestId, _logger);
+            return CreateLocalService(TestId, null, _logger);
         }
 
         /// <summary>
@@ -213,29 +213,19 @@ namespace DLaB.Xrm.Test.MSTest
 
         public static IOrganizationService CreateLocalService<T>(string test, ITestLogger? logger = null) where T : class
         {
-            return CreateLocalService(typeof(T).FullName + "|" + test, logger);
+            return CreateLocalService(typeof(T).FullName + "|" + test, null, logger);
         }
 
-        public static IOrganizationService CreateLocalService(string testId, ITestLogger? logger = null)
+        public IOrganizationService CreateLocalService(Action<LocalCrmDatabaseInfo> crmDatabaseOptions, ITestLogger? logger = null)
         {
-            return CreateLocalService(testId, _ => { }, logger);
+            return CreateLocalService(TestId, crmDatabaseOptions, logger);
         }
 
-        public static IOrganizationService CreateLocalService(string testId, Action<LocalCrmDatabaseInfo> crmDatabaseOptions, ITestLogger? logger = null)
+        public static IOrganizationService CreateLocalService(string testId, Action<LocalCrmDatabaseInfo>? crmDatabaseOptions = null, ITestLogger? logger = null)
         {
-            if (crmDatabaseOptions is null)
-            {
-                throw new ArgumentNullException(nameof(crmDatabaseOptions));
-            }
-
             var databaseInfo = LocalCrmDatabaseInfo.Create<TDataverseContext>(testId);
-            crmDatabaseOptions(databaseInfo);
+            crmDatabaseOptions?.Invoke(databaseInfo);
             return new FakeIOrganizationService(new LocalCrmDatabaseOrganizationService(databaseInfo), logger ?? new TestLogger());
-        }
-
-        public static IOrganizationService CreateLocalService(Action<LocalCrmDatabaseInfo> crmDatabaseOptions, ITestLogger? logger = null)
-        {
-            return CreateLocalService(Guid.NewGuid().ToString(), crmDatabaseOptions, logger);
         }
     }
 }
