@@ -15,8 +15,8 @@
   <Import Project="..\MSTest\MSTest.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="DataverseUnitTest" Version="3.4.0.33" />
-    <PackageReference Include="MSTest" Version="4.0.2" />
+    <PackageReference Include="DataverseUnitTest" Version="3.4.0.48" />
+    <PackageReference Include="MSTest" Version="4.2.2" />
   </ItemGroup>
 
 </Project>
